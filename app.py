@@ -6,7 +6,12 @@ import os
 
 app=Flask(__name__)
 
-classifier=pickle.load(open("Liver-Disease-Prediction/liver_model_prediction.pkl","rb"))
+
+curr=os.path.dirname(__file__)
+model_path=os.path.join(curr, "liver_model_prediction.pkl")
+
+with open(model_path,"rb") as f:
+    classifier=pickle.load(f)
 
 
 @app.route('/')
